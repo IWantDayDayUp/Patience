@@ -1,64 +1,92 @@
 import java.util.ArrayList;
 
+/**
+ * A model for a set of cards, we can do the following:
+ * 
+ * - Get the number of cards in this pile
+ * - Get whether this pile is empty
+ * - Add a new card to this pile
+ * - Remove a card from this pile
+ * - etc
+ * 
+ */
 public class Pile {
 
     public ArrayList<Card> cards;
 
     public Pile() {
-    }
-
-
-    /**
-     * @return all cards in the pile
-     */
-    public ArrayList<Card> getAllCards() {
-        return this.cards;
+        this.cards = new ArrayList<>();
     }
 
     /**
-     * @return the top card of the pile
-     */
-    public Card getTopcard() {
-        return this.cards.get(0);
-    }
-
-    /**
-     * @return the size(the number of cards) of the pile
+     * Return the number of cards of this pile
      */
     public int getSize() {
         return this.cards.size();
     }
 
     /**
-     * @return whether the pile is empty
+     * Return whether this pile is empty
      */
     public boolean isEmpty() {
-        return this.getSize() == 0;
+        return this.cards.isEmpty();
     }
 
     /**
-     * set the top card of the pile to 'face up'
+     * Set the top card of this pile to 'face up'
      */
     public void setTopCardFaceUp() {
-        Card card = this.cards.get(0);
-        card.setIsFaceUp(true);
+        this.cards.getLast().setIsFaceUp(true);
     }
+
     /**
-     * Add a new card to the pile
+     * Add a new card as the last element
      */
     public void addCard(Card card) {
-        this.cards.add(0, card);
+        this.cards.addLast(card);
     }
 
     /**
-     * 
-     * Remove a card(the top one) from the pile
+     * Remove and return the last card of this pile
      */
     public Card removeCard() {
-        Card card = this.getTopcard();
-        this.cards.removeFirst();
-
-        return card;
+        return this.cards.removeLast();
     }
 
+    /**
+     * Verify that the cards are consecutive
+     */
+    public boolean isNextCard(Card card) {
+        return true;
+    }
+
+    /**
+     * Verify that the cards have same suit
+     * 
+     * @param card
+     * @return
+     */
+    public boolean isSameSuit(Card card) {
+        return true;
+    }
+
+    /**
+     * Verify that the card values are consecutive
+     * 
+     * @param card
+     * @return
+     */
+    public boolean isNextValue(Card card) {
+        return true;
+    }
+
+    /**
+     * Verify that the cards have same color
+     * 
+     * @param card
+     * @return
+     */
+    public boolean isSameColor(Card card) {
+        return true;
+    }
 }
