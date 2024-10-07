@@ -1,38 +1,28 @@
 public class Card {
-    // 'S', 'H', 'C', 'D'
-    private final String suit;
-    // A-2-10-J-Q-K
-    private final String number;
-    // red/black
-    private final String color;
-    private boolean isFaceUp;
+    private final Suit suit; // Suit: Hearts, Diamond, Clubs, Spades
+    private final Value value; // Value: A, 2, 3, ..., 10, J, Q, K
+    private final String color; // red / black
 
-    // TODO: 下列函数应该不在card类中吧? 应该在controller//pile类中吧?
-    // - isSameSuit()
-    // - isNextLowerCard()
-    // - isNextHigherCard()
-    // - isDifferentColor()
-    // - isNextInLine()
-    // - isNextInSuit()
+    private boolean isFaceUp; // Whether the card face up
 
-    public Card(String suit, String number, String color, boolean isFaceUp) {
+    public Card(Suit suit, Value value) {
         this.suit = suit;
-        this.number = number;
-        this.color = color;
-        this.isFaceUp = isFaceUp;
+        this.value = value;
+        this.color = this.suit.getColor();
+        this.isFaceUp = false; // default: face down
     }
 
     /**
-     * @return the Number of the card
+     * @return the value of the card
      */
-    public String getNumber() {
-        return this.number;
+    public Value getValue() {
+        return this.value;
     }
 
     /**
      * @return the Suit of the card
      */
-    public String getSuit() {
+    public Suit getSuit() {
         return this.suit;
     }
 
@@ -51,27 +41,33 @@ public class Card {
     }
 
     /**
-     * @param whether the card is faced up, 'true' for 'face up', 'false' foe 'face
-     *                down'
+     * Convert the Value of the card to number
+     * 
+     * Example: Value.ACE -> 0, Value.King -> 13
+     */
+    public int getCardNumber() {
+        return switch (this.value) {
+            case Value.ACE -> 0;
+            case Value.TEN -> 10;
+            case Value.JACK -> 11;
+            case Value.QUEEN -> 12;
+            case Value.KING -> 13;
+            default -> Integer.parseInt(this.value.toString());
+        };
+    }
+
+    /**
+     * @param whether the card is faced up
      */
     public void setIsFaceUp(boolean isFaceUp) {
         this.isFaceUp = isFaceUp;
     }
 
     /**
-     * 
-     * 
      * @return string representation the card
      */
     @Override
     public String toString() {
-        if (this.isFaceUp) {
-            return "[" + this.number + ' ' + this.suit + "]";
-        } else {
-            return "[ ]";
-        }
+        return this.isFaceUp ? "[" + this.suit + this.value + "]" : "[XX]";
     }
 }
-
-  
-         
