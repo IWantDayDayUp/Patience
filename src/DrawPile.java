@@ -1,35 +1,47 @@
-public class DrawPile extends Pile {
-    public DrawPile() {
+import java.util.ArrayList;
 
+/**
+ * A model for a set of DrawPile, inherits from class 'Pile'.
+ *
+ * Add additional implementations as follows:
+ * - Verify that whether draw a card is possible without actually doing the
+ * 'draw' command
+ * - Draw a new card,
+ * 
+ */
+public class DrawPile extends Pile {
+    public ArrayList<Card> faceUpCards; // the cards that will 'face up'
+
+    public DrawPile() {
+        this.faceUpCards = new ArrayList<>();
     }
 
     /**
-     * Uncover a new card
+     * Draw a new card and maintain a maximum of 3 cards at the 'face up' state
      * 
-     * @return boolean: whether
+     * Replace the first 'face up' card with a 'face down' card in the DrawPile
      */
-    public boolean draw() {
-        int num = this.cards.size();
+    public void draw() {
+        // New card that to show
+        Card newCard = this.cards.removeLast();
+        newCard.setIsFaceUp(true);
+        this.faceUpCards.addLast(newCard);
 
-        if (num > 1) {
-
-            Card oldCard = this.cards.get(0);
-            this.cards.remove(0);
+        // A maximum of 3 cards will be 'face up', and the excess will need to be set
+        // 'face down'
+        if (this.faceUpCards.size() > 3) {
+            Card oldCard = this.faceUpCards.removeFirst();
             oldCard.setIsFaceUp(false);
-
-            Card newCard = this.cards.get(0);
-            newCard.setIsFaceUp(true);
-
-            this.cards.add(oldCard);
-
-            return true;
-        } else if (num == 1) {
-            System.out.println("There is only one card left, no more cards!");
-            return false;
-        } else {
-            System.out.println("The drew pile is empty, no more cards!");
-            return false;
+            this.addCard(oldCard);
         }
+    }
+
+    /**
+     * Verify that whether draw a card is possible without actually doing the 'draw'
+     * command
+     */
+    public boolean isDrawPossible() {
+        return !this.isEmpty() && !this.cards.getLast().getIsFaceUp();
     }
 
     /*
@@ -39,13 +51,9 @@ public class DrawPile extends Pile {
     @Override
     public String toString() {
         String info = "";
-        int num = this.cards.size();
-
-        for (int i = 0; i < Math.min(3, num); i++) {
-            info += this.cards.get(i).toString();
+        for (Card card : faceUpCards) {
+            info += card;
         }
-
-        info += " X " + num + " left";
 
         return info;
     }
