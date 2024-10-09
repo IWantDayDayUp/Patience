@@ -36,7 +36,9 @@ public class Pile {
      * Set the top card of this pile to 'face up'
      */
     public void setTopCardFaceUp() {
-        this.cards.getLast().setIsFaceUp(true);
+        if (this.getSize() > 0) {
+            this.cards.getLast().setIsFaceUp(true);
+        }
     }
 
     /**
