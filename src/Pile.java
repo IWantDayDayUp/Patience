@@ -47,6 +47,15 @@ public class Pile {
     }
 
     /**
+     * Add a few of cards to the pile by calling 'this.addCard()'
+     */
+    public void addCards(ArrayList<Card> cards) {
+        for (Card card : cards) {
+            this.addCard(card);
+        }
+    }
+
+    /**
      * Remove and return the last card of this pile
      */
     public Card removeCard() {

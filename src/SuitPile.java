@@ -1,12 +1,10 @@
-import java.util.ArrayList;
 
 /**
  * A model for the SuitPile, inherits from class 'Pile'.
  * 
  * Add additional implementations as follows:
- * - Add/Remove multiple cards
- * - Verify that the new card can add to the SuitPile based on the value and
- * color of the new card
+ * - (Override)isNextCard(): Verify that the new card can add to the
+ * SuitPile based on the value and suit of the new card
  */
 public class SuitPile extends Pile {
 
@@ -22,15 +20,6 @@ public class SuitPile extends Pile {
      */
     public Suit getSuit() {
         return this.suit;
-    }
-
-    /**
-     * Add a few of cards to the pile by calling 'this.addCard()'
-     */
-    public void addCards(ArrayList<Card> cards) {
-        for (Card card : cards) {
-            this.addCard(card);
-        }
     }
 
     /**

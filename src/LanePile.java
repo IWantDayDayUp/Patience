@@ -1,28 +1,16 @@
-import java.util.ArrayList;
 
 /**
  * A model for the LanePile, inherits from class 'Pile'.
  * 
  * Add additional implementations as follows:
  * - Add/Remove multiple cards
- * - Verify that the new card can add to the LanePile based on the value and
- * color of the new card
+ * - (Override)isNextCard(): Verify that the new card can add to the
+ * LanePile based on the value and color of the new card
  */
 public class LanePile extends Pile {
 
     public LanePile() {
 
-    }
-
-    /**
-     * Add a few of cards to the pile by calling 'this.addCard()'
-     * 
-     * @param cards the cards to be removed
-     */
-    public void addCards(ArrayList<Card> cards) {
-        for (Card card : cards) {
-            this.addCard(card);
-        }
     }
 
     /**
