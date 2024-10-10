@@ -68,6 +68,17 @@ public class Card {
      */
     @Override
     public String toString() {
-        return this.isFaceUp ? "[" + this.suit + this.value + "]" : "[XX]";
+        String s;
+        if (this.isFaceUp) {
+            if (this.color.equals("red")) {
+                s = "[\033[0;31m" + this.suit + this.value + "\033[0m]";
+            } else {
+                s = "[\033[0;30m" + this.suit + this.value + "\033[0m]";
+            }
+        } else {
+            s = "[XX]";
+        }
+
+        return s;
     }
 }
