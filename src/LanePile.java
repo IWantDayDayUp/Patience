@@ -53,7 +53,7 @@ public class LanePile extends Pile {
     @Override
     public boolean isSameColor(Card card) {
         if (this.getSize() == 0) {
-            return true;
+            return false;
         }
 
         return this.cards.getLast().getColor().equals(card.getColor());
