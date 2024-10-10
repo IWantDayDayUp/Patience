@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Command {
 
     Scanner in; // get the command entered by player
+    public boolean isTryMultiCards;
 
     // player can do follows: draw, move, quit
     public enum CommandType {
@@ -23,6 +24,7 @@ public class Command {
 
     public Command() {
         in = new Scanner(System.in);
+        this.isTryMultiCards = false;
     }
 
     /**
@@ -34,7 +36,7 @@ public class Command {
             System.out.println("Enter command: ");
             input = in.nextLine();
 
-            System.out.println("Player's input: " + input);
+            // System.out.println("Player's input: " + input);
 
             this.setCommand(input);
             if (this.isValid()) {
@@ -68,7 +70,14 @@ public class Command {
 
             this.moveFrom = this.command.substring(0, 1);
             this.moveTo = this.command.substring(1, 2);
-            this.numCards = this.command.length() == 2 ? 1 : Integer.parseInt(this.command.substring(2));
+
+            if (this.command.length() != 2) {
+                this.numCards = Integer.parseInt(this.command.substring(2));
+                this.isTryMultiCards = false;
+            } else {
+                this.numCards = 1;
+                this.isTryMultiCards = true;
+            }
         }
 
         return this.commandType;
