@@ -356,15 +356,14 @@ public class Board {
     private ArrayList<Card> getCardsFromPile(Pile pile, int num, boolean isReadOnly) {
         ArrayList<Card> cards = new ArrayList<>();
 
-        if (isReadOnly) {
-            for (int i = num - 1; i >= 0; i--) {
+        for (int i = 0; i < num; i++) {
+            if (isReadOnly) {
                 cards.addFirst(pile.cards.get(pile.getSize() - 1 - i));
-            }
-        } else {
-            for (int i = 0; i < num; i++) {
-                cards.add(pile.removeCard());
+            } else {
+                cards.addFirst(pile.removeCard());
             }
         }
+
         // for (Card card : cards) {
         //     System.out.print(card);
         // }
