@@ -47,7 +47,7 @@ public class Card {
      */
     public int getCardNumber() {
         return switch (this.value) {
-            case Value.ACE -> 0;
+            case Value.ACE -> 1;
             case Value.TEN -> 10;
             case Value.JACK -> 11;
             case Value.QUEEN -> 12;
