@@ -195,6 +195,8 @@ public class Board {
         if (command.isDraw()) {
             return this.isValidDraw();
         }
+        // System.out.println("is valid move from: " + this.isValidMoveFrom(command));
+        // System.out.println("is valid move to: " + this.isValidMoveTo(command));
         return this.isValidMoveFrom(command) && this.isValidMoveTo(command);
     }
 
@@ -299,6 +301,11 @@ public class Board {
         ArrayList<Card> cardsNeedToMove = this.getCardsNeedToMove(command, true);
         Card topCard = cardsNeedToMove.get(0);
 
+        // System.out.println("card to move: " + topCard);
+        // if (this.lanePiles[idxTo].getSize() > 0) {
+        //     System.out.println("card to comp: " + this.lanePiles[idxTo].cards.getLast());
+        // }
+
         return this.lanePiles[idxTo].isNextCard(topCard);
     }
 
@@ -309,6 +316,11 @@ public class Board {
         int idxTo = command.getIndex()[1];
         ArrayList<Card> cardsNeedToMove = this.getCardsNeedToMove(command, true);
         Card topCard = cardsNeedToMove.get(0);
+
+        // System.out.println("card to move: " + topCard);
+        // if (this.suitPiles[idxTo].getSize() > 0) {
+        //     System.out.println("card to comp: " + this.suitPiles[idxTo].cards.getLast());
+        // }
 
         return this.suitPiles[idxTo].isNextCard(topCard);
     }
@@ -353,6 +365,9 @@ public class Board {
                 cards.add(pile.removeCard());
             }
         }
+        // for (Card card : cards) {
+        //     System.out.print(card);
+        // }
 
         return cards;
     }
