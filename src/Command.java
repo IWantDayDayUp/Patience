@@ -164,13 +164,18 @@ public class Command {
         int[] index = new int[2];
         if (this.isMoveFromLane()) {
             index[0] = this.getLaneIndex(this.moveFrom);
-        } else if (this.isMoveToLane()) {
-            index[1] = this.getLaneIndex(this.moveTo);
         } else if (this.isMoveFromSuit()) {
             index[0] = this.getSuitIndex(this.moveFrom);
+        }
+
+        if (this.isMoveToLane()) {
+            index[1] = this.getLaneIndex(this.moveTo);
         } else if (this.isMoveToSuit()) {
             index[1] = this.getSuitIndex(this.moveTo);
         }
+
+        // System.out.println("moveFrom: " + this.moveFrom + " index[0]: " + index[0]);
+        // System.out.println("moveTo: " + this.moveTo + " index[1]: " + index[1]);
 
         return index;
     }
@@ -180,8 +185,8 @@ public class Command {
      */
     private int getSuitIndex(String s) {
         return switch (s) {
-            case "D" -> 0;
-            case "H" -> 1;
+            case "H" -> 0;
+            case "D" -> 1;
             case "C" -> 2;
             case "S" -> 3;
             default -> 0;
@@ -192,6 +197,6 @@ public class Command {
      * Convert lane name to index
      */
     private int getLaneIndex(String s) {
-        return Integer.parseInt(s);
+        return Integer.parseInt(s) - 1;
     }
 }
