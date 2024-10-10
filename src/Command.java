@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 /**
@@ -9,6 +8,8 @@ import java.util.Scanner;
  * - convert command content to index
  */
 public class Command {
+
+    Scanner in; // get the command entered by player
 
     // player can do follows: draw, move, quit
     public enum CommandType {
@@ -21,22 +22,24 @@ public class Command {
     public int numCards; // the number of the cards to be moved
 
     public Command() {
-
+        in = new Scanner(System.in);
     }
 
     /**
      * Gets the command entered by the player from the terminal
      */
     public void getCommand() {
-        Scanner in = new Scanner(System.in);
         String input;
         do {
             System.out.println("Enter command: ");
             input = in.nextLine();
 
+            System.out.println("Player's input: " + input);
+
             this.setCommand(input);
             if (this.isValid()) {
-                // in.close();
+                this.getCommandType();
+                return;
             } else {
                 System.out.println("The command is invalid. Try again.");
             }
