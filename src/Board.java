@@ -264,6 +264,7 @@ public class Board {
 
         // count the number of cards that can be moved(means the card is face up)
         while (idx >= 0 && this.lanePiles[idxFrom].cards.get(idx).getIsFaceUp()) {
+            idx -= 1;
             num += 1;
         }
 
