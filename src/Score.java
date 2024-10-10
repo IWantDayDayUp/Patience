@@ -10,6 +10,12 @@ public class Score {
      * moved
      */
     public void update(Command command) {
+
+        if (!command.isMove())
+        {
+            return;
+        }
+
         if (command.isMoveFromDraw()) {
             this.score += 10;
         } else if (command.isMoveFromLane() && command.isMoveToSuit()) {
