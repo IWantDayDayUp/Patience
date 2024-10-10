@@ -47,7 +47,7 @@ public class SuitPile extends Pile {
     @Override
     public boolean isNextValue(Card card) {
         if (this.getSize() == 0) {
-            return true;
+            return card.getCardNumber() == 1;
         }
 
         return card.getCardNumber() - this.cards.getLast().getCardNumber() == 1;
