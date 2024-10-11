@@ -104,7 +104,7 @@ public class Board {
      */
     public void displaySuitPile() {
         for (int i = 0; i < 4; i++) {
-            System.out.print(Suit.values()[i] + ": " + suitPiles[i]);
+            System.out.print(Suit.values()[i] + ": " + suitPiles[i] + " ");
         }
     }
 
