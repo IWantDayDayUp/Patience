@@ -128,18 +128,23 @@ public class Board {
      * Display the Game info
      */
     public void displayGameInfo() {
-        System.out.println("Name: Shaofeng Wang, ID: 24202293");
-        System.out.println("Course Name: COMP41670 Software Engineering");
+        System.out.println("Course: COMP41670 Software Engineering");
+        System.out.println("Name: Shaofeng Wang");
+        System.out.println("ID: 24202293");
     }
 
     /**
      * Display the Rule info: how to play the game
      */
     public void displayRuleInfo() {
-        System.out.println("game rules / how to play the game");
-        System.out.println("game rules / how to play the game");
-        System.out.println("game rules / how to play the game");
-        System.out.println("game rules / how to play the game");
+        System.out.println("");
+        System.out.println("You can do follows:");
+        System.out.println("- Enter 'Q'/'q' to quit the game");
+        System.out.println("- Enter 'D'/'d' to uncover a new card");
+        System.out.println("- Enter <label1><label2> to move one card from <label1> to <label2>. E.g. 'P2' or '2D'");
+        System.out.println(
+                "- Enter <label1><label2><number> to move <number> cards from <label1> to <label2>. E.g.'413'");
+        System.out.println("");
     }
 
     /**
