@@ -23,7 +23,7 @@ public class DrawPile extends Pile {
      */
     public void draw() {
         // New card that to show
-        Card newCard = this.cards.removeLast();
+        Card newCard = this.cards.removeFirst();
         newCard.setIsFaceUp(true);
         this.faceUpCards.addLast(newCard);
 
