@@ -197,7 +197,7 @@ public class Board {
         }
         // System.out.println("is valid move from: " + this.isValidMoveFrom(command));
         // System.out.println("is valid move to: " + this.isValidMoveTo(command));
-        return this.isValidMoveFrom(command) && this.isValidMoveTo(command);
+        return this.tryMultiCardsPossible(command) || (this.isValidMoveFrom(command) && this.isValidMoveTo(command));
     }
 
     /**
@@ -303,7 +303,7 @@ public class Board {
 
         // System.out.println("card to move: " + topCard);
         // if (this.lanePiles[idxTo].getSize() > 0) {
-        //     System.out.println("card to comp: " + this.lanePiles[idxTo].cards.getLast());
+        // System.out.println("card to comp: " + this.lanePiles[idxTo].cards.getLast());
         // }
 
         return this.lanePiles[idxTo].isNextCard(topCard);
@@ -319,10 +319,30 @@ public class Board {
 
         // System.out.println("card to move: " + topCard);
         // if (this.suitPiles[idxTo].getSize() > 0) {
-        //     System.out.println("card to comp: " + this.suitPiles[idxTo].cards.getLast());
+        // System.out.println("card to comp: " + this.suitPiles[idxTo].cards.getLast());
         // }
 
         return this.suitPiles[idxTo].isNextCard(topCard);
+    }
+
+    /**
+     * 
+     */
+    public boolean tryMultiCardsPossible(Command command) {
+        if (!command.isMoveFromLane() || !command.isMoveToLane()) {
+            return false;
+        }
+
+        int idxFrom = command.getIndex()[0];
+        int tryMaxtime = this.lanePiles[idxFrom].getSize();
+
+        for (int i = tryMaxtime; i >= 0; i--) {
+            command.numCards = i;
+            if (this.isMoveFromLanePilePossible(command) && this.isMoveToLanePilePossible(command)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -365,7 +385,7 @@ public class Board {
         }
 
         // for (Card card : cards) {
-        //     System.out.print(card);
+        // System.out.print(card);
         // }
 
         return cards;
