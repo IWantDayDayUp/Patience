@@ -17,7 +17,7 @@ public class Patience {
             Command command = new Command();
             command.getCommand();
             if (command.isQuit()) {
-                break;
+                return;
             }
 
             if (board.isValidMove(command)) {
