@@ -26,5 +26,7 @@ public class Patience {
                 board.displayCommandNotExecuted();
             }
         } while (!board.isGameOver());
+        System.out.println("You win");
+        System.out.println("Your get " + board.score + " points with " + board.moveCnt + " moves");
     }
 }
