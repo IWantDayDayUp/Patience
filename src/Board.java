@@ -151,6 +151,7 @@ public class Board {
      * Display the re-try info when the command has not been executed
      */
     public void displayCommandNotExecuted() {
+        this.isNewBoard = false;
         System.out.println("The command has not been executed, please try again.");
 
     }
@@ -304,6 +305,10 @@ public class Board {
     private boolean isMoveToLanePilePossible(Command command) {
         int idxTo = command.getIndex()[1];
         ArrayList<Card> cardsNeedToMove = this.getCardsNeedToMove(command, true);
+
+        if (cardsNeedToMove.isEmpty()) {
+            return false;
+        }
         Card topCard = cardsNeedToMove.get(0);
 
         // System.out.println("card to move: " + topCard);
@@ -320,6 +325,10 @@ public class Board {
     private boolean isMoveToSuitPilePossible(Command command) {
         int idxTo = command.getIndex()[1];
         ArrayList<Card> cardsNeedToMove = this.getCardsNeedToMove(command, true);
+
+        if (cardsNeedToMove.isEmpty()) {
+            return false;
+        }
         Card topCard = cardsNeedToMove.get(0);
 
         // System.out.println("card to move: " + topCard);
