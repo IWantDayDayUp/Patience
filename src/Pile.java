@@ -73,9 +73,6 @@ public class Pile {
 
     /**
      * Verify that the cards have same suit
-     * 
-     * @param card
-     * @return
      */
     public boolean isSameSuit(Card card) {
         return true;
@@ -83,9 +80,6 @@ public class Pile {
 
     /**
      * Verify that the card values are consecutive
-     * 
-     * @param card
-     * @return
      */
     public boolean isNextValue(Card card) {
         return true;
@@ -93,9 +87,6 @@ public class Pile {
 
     /**
      * Verify that the cards have same color
-     * 
-     * @param card
-     * @return
      */
     public boolean isSameColor(Card card) {
         return true;
