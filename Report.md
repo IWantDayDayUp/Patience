@@ -27,4 +27,4 @@
 | :------------------- | :-----------: |
 | Display welcome info | Fully working |
 | Display Rules info   | Fully working |
-| card color           | Fully working |
+| Show card color      | Fully working |
