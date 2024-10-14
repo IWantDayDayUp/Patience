@@ -153,7 +153,6 @@ public class Board {
     public void displayCommandNotExecuted() {
         this.isNewBoard = false;
         System.out.println("The command has not been executed, please try again.");
-
     }
 
     /**

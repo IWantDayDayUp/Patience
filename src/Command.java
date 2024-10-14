@@ -58,6 +58,13 @@ public class Command {
     }
 
     /**
+     * Set the command content, and translate to UpperCase
+     */
+    public void setCommand(String newCommand) {
+        this.command = newCommand.trim().toUpperCase();
+    }
+
+    /**
      * Return the command type
      */
     public CommandType getCommandType() {
@@ -102,13 +109,6 @@ public class Command {
      */
     public boolean isMove() {
         return this.commandType == CommandType.MOVE;
-    }
-
-    /**
-     * Set the command content, and translate to UpperCase
-     */
-    public void setCommand(String newCommand) {
-        this.command = newCommand.trim().toUpperCase();
     }
 
     /**
