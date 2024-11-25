@@ -3,7 +3,6 @@
 ## Info
 
 - Name: Shaofeng Wang
-- ID: 24202293
 - GitHub ID: @IWantDayDayUp
 
 ## Functionality
